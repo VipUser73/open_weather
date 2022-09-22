@@ -37,10 +37,12 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   void _loadingForecastEvent(
       LoadingForecastEvent event, Emitter<WeatherState> emit) async {
     try {
+      // Получение информации о погоде введёного города
       await _storageRepository.getFavWeather();
       emit(LoadedForecastState(
           weatherFavList: _storageRepository.weatherForecast));
     } catch (error) {
+      // Состояние ошибки "Failed to load data."
       emit(ErrorConnectingState());
     }
   }

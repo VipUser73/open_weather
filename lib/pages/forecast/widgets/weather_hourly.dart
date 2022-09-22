@@ -14,7 +14,12 @@ class WeatherHourly extends StatelessWidget {
       height: 110,
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(vertical: 16),
-      decoration: BoxDecoration(border: Border.all(color: Colors.white)),
+      decoration: const BoxDecoration(
+        border: Border(
+          top: BorderSide(color: Colors.white),
+          bottom: BorderSide(color: Colors.white),
+        ),
+      ),
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,

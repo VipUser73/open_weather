@@ -16,9 +16,10 @@ class Weather7days extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ListView.separated(
+              physics: const AlwaysScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics()),
               separatorBuilder: (context, index) => const SizedBox(height: 10),
               scrollDirection: Axis.vertical,
-              physics: const BouncingScrollPhysics(),
               itemCount: bloc.state.weatherFavList.first.daily.length,
               itemBuilder: (context, index) {
                 return Row(

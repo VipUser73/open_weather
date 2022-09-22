@@ -2,22 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_weather/bloc/init_bloc.dart';
 import 'package:open_weather/bloc/weather_bloc.dart';
-import 'package:open_weather/pages/forecast_now/widgets/weather_7days.dart';
-import 'package:open_weather/pages/forecast_now/widgets/weather_hourly.dart';
-import 'package:open_weather/pages/forecast_now/widgets/weathet_now.dart';
-import 'package:open_weather/repositories/local_repository.dart';
-
-class Forecast extends StatelessWidget {
-  const Forecast({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<WeatherBloc>(
-      create: (context) => WeatherBloc(context.read<LocalRepository>())
-        ..add(LoadingForecastEvent()),
-      child: const ForecastPage(),
-    );
-  }
-}
+import 'package:open_weather/pages/forecast/widgets/weather_7days.dart';
+import 'package:open_weather/pages/forecast/widgets/weather_hourly.dart';
+import 'package:open_weather/pages/forecast/widgets/weathet_now.dart';
 
 class ForecastPage extends StatelessWidget {
   const ForecastPage({Key? key}) : super(key: key);
@@ -66,7 +53,7 @@ class ForecastPage extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: BlocConsumer<WeatherBloc, WeatherState>(
                 listener: (context, state) {
               if (state is ErrorConnectingState) {

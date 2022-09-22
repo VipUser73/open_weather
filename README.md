@@ -1,16 +1,18 @@
-# open_weather
+Колесников Евгений
 
-A new Flutter project.
+Тестовое задание Mobile (Flutter)
 
-## Getting Started
+В приложении используется архитектура BLoC с помощью библиотеки flutter_bloc 8.0.1.
 
-This project is a starting point for a Flutter application.
+На экране 1, при первом входе отображается поле для ввода названия города и кнопка подтвердить.
+На экране 2 отображается детальная информация о погоде в выбранном городе (температура воздуха, скорость ветра, атмосферное давление, вероятность дождя, влажность воздуха), почасовая погода на ближайшие 48 часов. Информацию о погоде можно обновить вручную, проведя по экрану сверху вниз.
+Информация загружается из API OpenWeatherMap (One Call API 1.0). Координаты города (широта и долгота) для запроса загружаются из локального файла (city_list.json).
 
-A few resources to get you started if this is your first Flutter project:
+На экране 2, в аппбаре реализована кнопка, при нажатие на которую можно посмотреть информацию о погоде за 7 дней списком, где самый первый элемент списка с самой низкой температурой.
+На экране 2, в аппбаре реализована кнопка, при нажатие на которую пользователь переходит на экран 1, где можно заново ввести город и получить информацию о погоде этого города.
+При перезагрузке приложения, открывается экран 2 с информацией о погоде ранее выбранного города, если город не был выбран, показывается экран 1.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+В случае отсутствия интернета или получения ошибки из api при переходе на экран 2, показывается SnackBar в
+центре экрана с ошибкой. Также, в центре экран отображается текст “Failed to load data.”.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Приложение тестировалось на физическом Android устройстве Xiaomi Redmi 8 pro и на эмуляторах Pixel 3 XL, Nexus S.

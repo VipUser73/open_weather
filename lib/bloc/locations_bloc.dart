@@ -26,12 +26,15 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
 
   void _addCities(SearchCityEvent event, Emitter<LocationsState> emit) async {
     try {
+      // Поиск введёного города в общей базе городов
       final Cities cityAndCoord = _storageRepository.citiesFromJson.firstWhere(
           (e) => e.city.toLowerCase() == event.cityName.toLowerCase());
-
+      // Сохранение информации о городе в локальном хранилище
       await _storageRepository.saveFavCity(cityAndCoord);
+      // Отправка события блоку инициализации, для открытия соответствующего экрана
       _initBloc.add(LoadingCitiesEvent());
     } catch (error) {
+      // Состояние ошибки "Город не найден"
       emit(CityNotFoundState());
     }
   }

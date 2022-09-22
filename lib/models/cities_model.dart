@@ -21,9 +21,4 @@ class Cities {
       lat: json['coord']['lat'] as double,
     );
   }
-  factory Cities.fromDB(Map<String, dynamic> data) => Cities(
-        city: data["city"] ?? '',
-        lon: data["lon"] ?? 0.0,
-        lat: data["lat"] ?? 0.0,
-      );
 }
